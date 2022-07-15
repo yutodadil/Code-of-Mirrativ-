@@ -1,0 +1,18 @@
+import requests
+import time
+import os
+
+def clear():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+URL = "https://www.mirrativ.com/api/live/catalog?id=2&cursor="
+
+Header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36", "accept-language": "ja,en-US;q=0.9,en;q=0.8"}
+
+resp = requests.get(URL, timeout=500000, headers=Header)
+
+# textでunicode, contentでstr
+
+print("Done.\nSaved output2.txt!!")
+f = open('output2.txt', 'a', encoding='UTF-8')
+f.write(resp.text)
